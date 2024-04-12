@@ -1,9 +1,9 @@
-# NEAR Contract Parser
+# Massa Contract Parser
 
 [![](https://img.shields.io/github/stars/NEARFoundation/near-contract-parser)](https://github.com/NEARFoundation/near-contract-parser)
 [![](https://img.shields.io/npm/dt/near-contract-parser)](https://www.npmjs.com/package/near-contract-parser)
 
-Collection of utilities for parsing base64-encoded WASM smart contracts on [NEAR Protocol](https://near.org), extracting exported members, and detecting likely candidates for [standard contract interface implementation](https://nomicon.io/Standards/README.html).
+Collection of utilities for parsing base64-encoded WASM smart contracts on [Massa Protocol](https://massa.net), extracting exported members, and detecting likely candidates for [standard contract interface implementation](https://nomicon.io/Standards/README.html).
 
 # Usage
 
@@ -16,30 +16,14 @@ $ npm install --save near-contract-parser
 ## Example
 
 ```js
-const { Near, keyStores } = require('near-api-js');
-const { parseContract } = require('near-contract-parser');
-
-const near = new Near({
-  networkId: 'mainnet',
-  keyStore: new keyStores.InMemoryKeyStore(),
-  nodeUrl: 'https://rpc.mainnet.near.org',
-  walletUrl: 'https://wallet.mainnet.near.org',
-  helperUrl: 'https://helper.mainnet.near.org',
-  explorerUrl: 'https://explorer.mainnet.near.org',
-});
+import Parser from 'near-contract-parser';
 
 (async () => {
-  const account_id = 'CONTRACT_ACCOUNT_ID.near';
-  const { code_base64 } = await near.connection.provider.query({
-    account_id,
-    finality: 'final',
-    request_type: 'view_code',
-  });
-
+  const { code_base64 } = await getBytecode("")
   console.log(parseContract(code_base64));
 })();
 ```
 
-# Authors
+# Attribution
 
-- Jacob Lindahl <jacob@near.foundation> [@sudo_build](https://twitter.com/sudo_build)
+This package is based on the [NEAR Contract Parser](https://github.com/nearfoundation/near-contract-parser) by [NEAR Foundation](https://near.org).

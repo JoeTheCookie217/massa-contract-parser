@@ -1,11 +1,7 @@
 {
-  "name": "near-contract-parser",
+  "name": "massa-contract-parser",
   "version": "1.0.0",
-  "description": "Parse NEAR smart contract WASM code.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NEARFoundation/near-contract-parser"
-  },
+  "description": "Parse Massa smart contract WASM code.",
   "main": "dist/bundle.js",
   "module": "dist/bundle.mjs",
   "types": "dist/bundle.d.ts",
@@ -19,15 +15,12 @@
     "test": "jest"
   },
   "keywords": [
-    "near",
-    "nearprotocol",
-    "near-protocol",
+    "massa",
     "blockchain",
     "smart-contract",
     "webassembly",
     "wasm"
   ],
-  "author": "Jacob Lindahl <jacob.lindahl@near.org>",
   "license": "MIT",
   "devDependencies": {
     "@jest/globals": "^29.7.0",

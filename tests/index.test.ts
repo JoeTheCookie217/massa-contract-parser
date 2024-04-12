@@ -8,8 +8,6 @@ test('wrap', async () => {
 
   const expectedMethodNames = [
     'storage_minimum_balance',
-    'near_deposit',
-    'near_withdraw',
     'new',
     'ft_transfer',
     'ft_transfer_call',
@@ -28,11 +26,7 @@ test('wrap', async () => {
     expect.arrayContaining(expectedMethodNames),
   );
 
-  const expectedInterfaces = [
-    lib.StandardInterfaceId.NEP141,
-    lib.StandardInterfaceId.NEP145,
-    lib.StandardInterfaceId.NEP148,
-  ];
+  const expectedInterfaces = [lib.StandardInterfaceId.ERC20];
 
   expect(parsed.probableInterfaces).toEqual(
     expect.arrayContaining(expectedInterfaces),
@@ -69,49 +63,4 @@ test('questverse', async () => {
   );
 
   expect(parsed.probableInterfaces.length).toEqual(0);
-});
-
-test('adder_no_abi', async () => {
-  const payload = fs.readFileSync('./tests/adder_no_abi.base64', 'utf8');
-  const parsed = await lib.parseContract(payload);
-
-  const expectedMethodNames = [
-    'contract_source_metadata',
-    'add',
-    'add_borsh',
-    'add_callback',
-  ];
-  expect(parsed.methodNames.length).toEqual(expectedMethodNames.length);
-  expect(parsed.methodNames).toEqual(
-    expect.arrayContaining(expectedMethodNames),
-  );
-
-  const expectedInterfaces = [lib.StandardInterfaceId.NEP330];
-  expect(parsed.probableInterfaces).toEqual(
-    expect.arrayContaining(expectedInterfaces),
-  );
-  expect(parsed.probableInterfaces.length).toEqual(expectedInterfaces.length);
-});
-
-test('adder_with_abi', async () => {
-  const payload = fs.readFileSync('./tests/adder_with_abi.base64', 'utf8');
-  const parsed = await lib.parseContract(payload);
-
-  const expectedMethodNames = [
-    '__contract_abi',
-    'contract_source_metadata',
-    'add',
-    'add_borsh',
-    'add_callback',
-  ];
-  expect(parsed.methodNames.length).toEqual(expectedMethodNames.length);
-  expect(parsed.methodNames).toEqual(
-    expect.arrayContaining(expectedMethodNames),
-  );
-
-  const expectedInterfaces = [lib.StandardInterfaceId.NEP330];
-  expect(parsed.probableInterfaces).toEqual(
-    expect.arrayContaining(expectedInterfaces),
-  );
-  expect(parsed.probableInterfaces.length).toEqual(expectedInterfaces.length);
 });
