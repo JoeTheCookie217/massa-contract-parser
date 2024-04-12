@@ -1,22 +1,19 @@
 # Massa Contract Parser
 
-[![](https://img.shields.io/github/stars/NEARFoundation/near-contract-parser)](https://github.com/NEARFoundation/near-contract-parser)
-[![](https://img.shields.io/npm/dt/near-contract-parser)](https://www.npmjs.com/package/near-contract-parser)
-
-Collection of utilities for parsing base64-encoded WASM smart contracts on [Massa Protocol](https://massa.net), extracting exported members, and detecting likely candidates for [standard contract interface implementation](https://nomicon.io/Standards/README.html).
+Collection of utilities for parsing base64-encoded WASM smart contracts on [Massa](https://massa.net), extracting exported members, and detecting likely candidates for [standard contract interface implementation](https://docs.massa.net/docs/build/standards).
 
 # Usage
 
 ## Installation
 
 ```text
-$ npm install --save near-contract-parser
+$ npm install massa-contract-parser
 ```
 
 ## Example
 
 ```js
-import Parser from 'near-contract-parser';
+import Parser from 'massa-contract-parser';
 
 (async () => {
   const { code_base64 } = await getBytecode("")

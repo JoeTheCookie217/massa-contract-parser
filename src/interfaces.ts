@@ -2,6 +2,8 @@ import { JsonType } from './JsonType';
 
 export enum StandardInterfaceId {
   ERC20 = 'erc20',
+  ERC20Mintable = 'erc20_mintable',
+  ERC20Burnable = 'erc20_burnable',
 }
 
 /**
@@ -30,6 +32,69 @@ export interface StandardInterfaceMethod {
   args: StandardInterfaceArgument[];
 }
 
+const ftCoreMethods: StandardInterfaceMethod[] = [
+  {
+    name: 'version',
+    args: [],
+  },
+  {
+    name: 'name',
+    args: [],
+  },
+  {
+    name: 'symbol',
+    args: [],
+  },
+  {
+    name: 'total_supply',
+    args: [],
+  },
+  {
+    name: 'decimals',
+    args: [],
+  },
+  {
+    name: 'balanceOf',
+    args: [{ name: 'addr', type: 'string' }],
+  },
+  {
+    name: 'transfer',
+    args: [
+      { name: 'to', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+  {
+    name: 'transferFrom',
+    args: [
+      { name: 'from', type: 'string' },
+      { name: 'to', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+  {
+    name: 'allowance',
+    args: [
+      { name: 'owner', type: 'string' },
+      { name: 'spender', type: 'string' },
+    ],
+  },
+  {
+    name: 'increaseAllowance',
+    args: [
+      { name: 'spender', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+  {
+    name: 'decreaseAllowance',
+    args: [
+      { name: 'spender', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+];
+
 /**
  * Mapping interface ID to interface specification
  */
@@ -38,32 +103,38 @@ export const interfaces: Readonly<
 > = Object.freeze({
   [StandardInterfaceId.ERC20]: {
     id: StandardInterfaceId.ERC20,
-    name: 'FT Core (NEP-141)',
+    name: 'FT Core (ERC-20)',
+    methods: ftCoreMethods,
+  },
+  [StandardInterfaceId.ERC20Mintable]: {
+    id: StandardInterfaceId.ERC20Mintable,
+    name: 'FT Mint (ERC-20)',
     methods: [
+      ...ftCoreMethods,
       {
-        name: 'ft_transfer',
+        name: 'mint',
         args: [
-          { name: 'receiver_id', type: 'string' },
-          { name: 'amount', type: 'string' },
-          { name: 'memo', type: ['string', 'null'] },
+          { name: 'to', type: 'string' },
+          { name: 'amount', type: 'number' },
         ],
       },
+    ],
+  },
+  [StandardInterfaceId.ERC20Burnable]: {
+    id: StandardInterfaceId.ERC20Burnable,
+    name: 'FT Burn (ERC-20)',
+    methods: [
+      ...ftCoreMethods,
       {
-        name: 'ft_transfer_call',
+        name: 'burn',
+        args: [{ name: 'amount', type: 'number' }],
+      },
+      {
+        name: 'burnFrom',
         args: [
-          { name: 'receiver_id', type: 'string' },
-          { name: 'amount', type: 'string' },
-          { name: 'memo', type: ['string', 'null'] },
-          { name: 'msg', type: 'string' },
+          { name: 'from', type: 'string' },
+          { name: 'amount', type: 'number' },
         ],
-      },
-      {
-        name: 'ft_total_supply',
-        args: [],
-      },
-      {
-        name: 'ft_balance_of',
-        args: [{ name: 'account_id', type: 'string' }],
       },
     ],
   },
