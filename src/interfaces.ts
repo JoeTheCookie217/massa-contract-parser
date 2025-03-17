@@ -4,6 +4,7 @@ export enum StandardInterfaceId {
   ERC20 = 'erc20',
   ERC20Mintable = 'erc20_mintable',
   ERC20Burnable = 'erc20_burnable',
+  ERC721 = 'erc721',
 }
 
 /**
@@ -94,6 +95,39 @@ const ftCoreMethods: StandardInterfaceMethod[] = [
     ],
   },
 ];
+const nftCoreMethods: StandardInterfaceMethod[] = [
+  {
+    name: 'version',
+    args: [],
+  },
+  {
+    name: 'name',
+    args: [],
+  },
+  {
+    name: 'symbol',
+    args: [],
+  },
+  {
+    name: 'balanceOf',
+    args: [{ name: 'addr', type: 'string' }],
+  },
+  {
+    name: 'transfer',
+    args: [
+      { name: 'to', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+  {
+    name: 'transferFrom',
+    args: [
+      { name: 'from', type: 'string' },
+      { name: 'to', type: 'string' },
+      { name: 'amount', type: 'number' },
+    ],
+  },
+];
 
 /**
  * Mapping interface ID to interface specification
@@ -137,5 +171,10 @@ export const interfaces: Readonly<
         ],
       },
     ],
+  },
+  [StandardInterfaceId.ERC721]: {
+    id: StandardInterfaceId.ERC721,
+    name: 'NFT Core (ERC-721)',
+    methods: nftCoreMethods,
   },
 });

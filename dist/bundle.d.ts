@@ -3,14 +3,9 @@
  */
 export type JsonType = 'string' | 'number' | 'object' | 'array' | 'boolean' | 'null';
 export enum StandardInterfaceId {
-    NEP141 = "nep141",
-    NEP145 = "nep145",
-    NEP148 = "nep148",
-    NEP171 = "nep171",
-    NEP177 = "nep177",
-    NEP178 = "nep178",
-    NEP199 = "nep199",
-    NEP330 = "nep330"
+    ERC20 = "erc20",
+    ERC20Mintable = "erc20_mintable",
+    ERC20Burnable = "erc20_burnable"
 }
 /**
  * Well-known smart contract interface specification

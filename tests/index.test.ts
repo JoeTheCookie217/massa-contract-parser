@@ -33,34 +33,3 @@ test('wrap', async () => {
   );
   expect(parsed.probableInterfaces.length).toEqual(expectedInterfaces.length);
 });
-
-test('questverse', async () => {
-  const payload = fs.readFileSync('./tests/questverse.base64', 'utf8');
-  const parsed = await lib.parseContract(payload);
-
-  const expectedMethodNames = [
-    'is_global_freeze',
-    'quests',
-    'quest_by_id',
-    'quests_by_owner',
-    'claimed_quests_by_user',
-    'new',
-    'create_quest',
-    'close_quest',
-    'claim_reward',
-    'claim_reward_unverified',
-    'admin_freeze',
-    'admin_unfreeze',
-    'admin_set_quest_fee',
-    'admin_set_admin',
-    'admin_set_claim_signer',
-    'admin_update_indexer_name',
-    'on_claim_reward_verified',
-  ];
-  expect(parsed.methodNames.length).toEqual(expectedMethodNames.length);
-  expect(parsed.methodNames).toEqual(
-    expect.arrayContaining(expectedMethodNames),
-  );
-
-  expect(parsed.probableInterfaces.length).toEqual(0);
-});

@@ -28,357 +28,162 @@ $parcel$export($82c8e41b6d1c6b83$exports, "StandardInterfaceId", function () { r
 $parcel$export($82c8e41b6d1c6b83$exports, "interfaces", function () { return $82c8e41b6d1c6b83$export$bc1125d123d9fc6; });
 var $82c8e41b6d1c6b83$export$94bf4ff490ded96e;
 (function(StandardInterfaceId) {
-    StandardInterfaceId["NEP141"] = "nep141";
-    StandardInterfaceId["NEP145"] = "nep145";
-    StandardInterfaceId["NEP148"] = "nep148";
-    StandardInterfaceId["NEP171"] = "nep171";
-    StandardInterfaceId["NEP177"] = "nep177";
-    StandardInterfaceId["NEP178"] = "nep178";
-    StandardInterfaceId["NEP199"] = "nep199";
-    StandardInterfaceId["NEP330"] = "nep330";
+    StandardInterfaceId["ERC20"] = "erc20";
+    StandardInterfaceId["ERC20Mintable"] = "erc20_mintable";
+    StandardInterfaceId["ERC20Burnable"] = "erc20_burnable";
 })($82c8e41b6d1c6b83$export$94bf4ff490ded96e || ($82c8e41b6d1c6b83$export$94bf4ff490ded96e = {}));
+const $82c8e41b6d1c6b83$var$ftCoreMethods = [
+    {
+        name: "version",
+        args: []
+    },
+    {
+        name: "name",
+        args: []
+    },
+    {
+        name: "symbol",
+        args: []
+    },
+    {
+        name: "total_supply",
+        args: []
+    },
+    {
+        name: "decimals",
+        args: []
+    },
+    {
+        name: "balanceOf",
+        args: [
+            {
+                name: "addr",
+                type: "string"
+            }
+        ]
+    },
+    {
+        name: "transfer",
+        args: [
+            {
+                name: "to",
+                type: "string"
+            },
+            {
+                name: "amount",
+                type: "number"
+            }
+        ]
+    },
+    {
+        name: "transferFrom",
+        args: [
+            {
+                name: "from",
+                type: "string"
+            },
+            {
+                name: "to",
+                type: "string"
+            },
+            {
+                name: "amount",
+                type: "number"
+            }
+        ]
+    },
+    {
+        name: "allowance",
+        args: [
+            {
+                name: "owner",
+                type: "string"
+            },
+            {
+                name: "spender",
+                type: "string"
+            }
+        ]
+    },
+    {
+        name: "increaseAllowance",
+        args: [
+            {
+                name: "spender",
+                type: "string"
+            },
+            {
+                name: "amount",
+                type: "number"
+            }
+        ]
+    },
+    {
+        name: "decreaseAllowance",
+        args: [
+            {
+                name: "spender",
+                type: "string"
+            },
+            {
+                name: "amount",
+                type: "number"
+            }
+        ]
+    }
+];
 const $82c8e41b6d1c6b83$export$bc1125d123d9fc6 = Object.freeze({
-    ["nep141"]: {
-        id: "nep141",
-        name: "FT Core (NEP-141)",
+    ["erc20"]: {
+        id: "erc20",
+        name: "FT Core (ERC-20)",
+        methods: $82c8e41b6d1c6b83$var$ftCoreMethods
+    },
+    ["erc20_mintable"]: {
+        id: "erc20_mintable",
+        name: "FT Mint (ERC-20)",
         methods: [
+            ...$82c8e41b6d1c6b83$var$ftCoreMethods,
             {
-                name: "ft_transfer",
+                name: "mint",
                 args: [
                     {
-                        name: "receiver_id",
+                        name: "to",
                         type: "string"
                     },
                     {
                         name: "amount",
-                        type: "string"
-                    },
-                    {
-                        name: "memo",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "ft_transfer_call",
-                args: [
-                    {
-                        name: "receiver_id",
-                        type: "string"
-                    },
-                    {
-                        name: "amount",
-                        type: "string"
-                    },
-                    {
-                        name: "memo",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    {
-                        name: "msg",
-                        type: "string"
-                    }
-                ]
-            },
-            {
-                name: "ft_total_supply",
-                args: []
-            },
-            {
-                name: "ft_balance_of",
-                args: [
-                    {
-                        name: "account_id",
-                        type: "string"
-                    }
-                ]
-            }
-        ]
-    },
-    ["nep145"]: {
-        id: "nep145",
-        name: "Storage Management (NEP-145)",
-        methods: [
-            {
-                name: "storage_deposit",
-                args: [
-                    {
-                        name: "account_id",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    {
-                        name: "registration_only",
-                        type: [
-                            "boolean",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "storage_withdraw",
-                args: [
-                    {
-                        name: "amount",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "storage_unregister",
-                args: [
-                    {
-                        name: "force",
-                        type: [
-                            "boolean",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "storage_balance_bounds",
-                args: []
-            },
-            {
-                name: "storage_balance_of",
-                args: [
-                    {
-                        name: "account_id",
-                        type: "string"
-                    }
-                ]
-            }
-        ]
-    },
-    ["nep148"]: {
-        id: "nep148",
-        name: "FT Metadata (NEP-148)",
-        methods: [
-            {
-                name: "ft_metadata",
-                args: []
-            }
-        ]
-    },
-    ["nep171"]: {
-        id: "nep171",
-        name: "NFT Core (NEP-171)",
-        methods: [
-            {
-                name: "nft_transfer",
-                args: [
-                    {
-                        name: "receiver_id",
-                        type: "string"
-                    },
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "approval_id",
-                        type: [
-                            "number",
-                            "null"
-                        ]
-                    },
-                    {
-                        name: "memo",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "nft_transfer_call",
-                args: [
-                    {
-                        name: "receiver_id",
-                        type: "string"
-                    },
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "approval_id",
-                        type: [
-                            "number",
-                            "null"
-                        ]
-                    },
-                    {
-                        name: "memo",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    {
-                        name: "msg",
-                        type: "string"
-                    }
-                ]
-            },
-            {
-                name: "nft_token",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    }
-                ]
-            }
-        ]
-    },
-    ["nep177"]: {
-        id: "nep177",
-        name: "NFT Metadata (NEP-177)",
-        methods: [
-            {
-                name: "nft_metadata",
-                args: []
-            }
-        ]
-    },
-    ["nep178"]: {
-        id: "nep178",
-        name: "NFT Approval Management (NEP-178)",
-        methods: [
-            {
-                name: "nft_approve",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "account_id",
-                        type: "string"
-                    },
-                    {
-                        name: "msg",
-                        type: [
-                            "string",
-                            "null"
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "nft_revoke",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "account_id",
-                        type: "string"
-                    }
-                ]
-            },
-            {
-                name: "nft_revoke_all",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    }
-                ]
-            },
-            {
-                name: "nft_is_approved",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "approved_account_id",
-                        type: "string"
-                    },
-                    {
-                        name: "approval_id",
-                        type: [
-                            "number",
-                            "null"
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    ["nep199"]: {
-        id: "nep199",
-        name: "Royalties and Payouts (NEP-199)",
-        methods: [
-            {
-                name: "nft_payout",
-                args: [
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "balance",
-                        type: "string"
-                    },
-                    {
-                        name: "max_len_payout",
-                        type: "number"
-                    }
-                ]
-            },
-            {
-                name: "nft_transfer_payout",
-                args: [
-                    {
-                        name: "receiver_id",
-                        type: "string"
-                    },
-                    {
-                        name: "token_id",
-                        type: "string"
-                    },
-                    {
-                        name: "approval_id",
-                        type: "number"
-                    },
-                    {
-                        name: "balance",
-                        type: "string"
-                    },
-                    {
-                        name: "max_len_payout",
                         type: "number"
                     }
                 ]
             }
         ]
     },
-    ["nep330"]: {
-        id: "nep330",
-        name: "Source Metadata (NEP-330)",
+    ["erc20_burnable"]: {
+        id: "erc20_burnable",
+        name: "FT Burn (ERC-20)",
         methods: [
+            ...$82c8e41b6d1c6b83$var$ftCoreMethods,
             {
-                name: "contract_source_metadata",
-                args: []
+                name: "burn",
+                args: [
+                    {
+                        name: "amount",
+                        type: "number"
+                    }
+                ]
+            },
+            {
+                name: "burnFrom",
+                args: [
+                    {
+                        name: "from",
+                        type: "string"
+                    },
+                    {
+                        name: "amount",
+                        type: "number"
+                    }
+                ]
             }
         ]
     }

@@ -16,8 +16,8 @@ $ npm install massa-contract-parser
 import Parser from 'massa-contract-parser';
 
 (async () => {
-  const { code_base64 } = await getBytecode("")
-  console.log(parseContract(code_base64));
+  const { code_base64 } = await getBytecode("AS1...")
+  console.log(Parser.parseContract(code_base64));
 })();
 ```
 
